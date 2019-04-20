@@ -1,5 +1,32 @@
 apply plugin: 'com.android.library'
 
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'keyboard'
+
+    publishedGroupId = 'org.tuzhao.keyboard'
+    libraryName = 'keyboard'
+    artifact = 'keyboard'
+
+    libraryDescription = 'keyboard For Android'
+
+    siteUrl = 'https://github.com/tuzhao/safe_keyboard'
+    gitUrl = 'git@github.com:tuzhao/safe_keyboard.git'
+
+    //this variable defined in gradle.properties
+    libraryVersion = LIBRARY_VERSION as String
+
+    developerId = 'tuzhao'
+    developerName = 'tuzhao'
+    developerEmail = 'tuzhaocn@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+
 android {
     compileSdkVersion 28
 
@@ -22,3 +49,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
 }
+
+// upload command
+// ./gradlew clean build bintrayUpload -PdryRun=false
+
+apply from: 'bintrayv1.gradle'
+apply from: 'installv1.gradle'
