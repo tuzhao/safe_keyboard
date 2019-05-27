@@ -139,6 +139,19 @@ public final class SafeKeyboard extends PopupWindow {
         }
     }
 
+    /**
+     * 直接调用显示安全键盘
+     */
+    public void show() {
+        curEditText.requestFocus();
+        hideSystemKeyboard(curEditText);
+        Editable editable = curEditText.getText();
+        if (null != editable) {
+            Selection.setSelection(editable, editable.length());
+        }
+        showKeyboard(mPositionView);
+    }
+
     private final class CloseClickListener extends BaseOnClickListener {
         @Override
         public void click(View v) {
